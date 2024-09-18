@@ -8,8 +8,10 @@
 
 int main()
 {
-    FILE* text_data = fopen("Onegin.txt", "r");   // TODO move file name to constant, define or enter it from console argument
-    assert(text_data);
+    const char *file_name = "Onegin.txt";
+
+    FILE* text_data = fopen(file_name, "r");   // TODO move file name to constant, define or enter it from console argument
+    assert(text_data);                         // TODO read about argc argv 
 
     struct stat file_info = {};
 
@@ -74,6 +76,8 @@ int main()
 // ⠀⠈⠀⢀⠂⠄⡉⠄⢊⠄⡑⢢⠐⣊⠱⡈⠅⠀⠀⠜⣈⠧⠻⣜⣷⣻⢿⡽⣿⣿⣿⣿⣿⣿⡿⣿⣻⡽⣯⢟⡶⡙⢆⠡⢀⣯⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⢿⣿⣻⣼⢹
 
     input(text_data, text_lines);
+
+    
 
     char s1[] = "asd";
     char s2[] = "zxc";

@@ -11,7 +11,7 @@ void str_swap(char *line1, char *line2)
     assert(line1);
     assert(line2);  
 
-    char *ptr_temp = 0;   // FIXME char *ptr_temp = NULL;  NULL for pointers (nullptr better)
+    char *ptr_temp = nullptr;   // FIXME char *ptr_temp = NULL;  NULL for pointers (nullptr better)
 
     if(my_strcmp(line1, line2) == 1)
     {                                       // TODO swap pointers
