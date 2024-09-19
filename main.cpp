@@ -10,12 +10,12 @@ int main()
 {
     const char *file_name = "Onegin.txt";
 
-    FILE* text_data = fopen(file_name, "r");   // TODO move file name to constant, define or enter it from console argument
+    FILE* text_data = fopen(file_name, "r");
     assert(text_data);                         // TODO read about argc argv 
 
     struct stat file_info = {};
 
-    stat("Onegin.txt", &file_info);  // There is poin that should be solved by define or constant
+    stat(file_name, &file_info);
 
     size_t file_size = file_info.st_size;
 
@@ -27,8 +27,6 @@ int main()
 
         return 1;
     }
-    // TODO suka 
-    // BUG  kakogo huia net proverki na NULL!!!!!!!!!!
 
 //     ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⡄⠒⠂⢴⡢⢠⡀⢀⡀⣀⢰⡆⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠀⠀⠀⠀⠄⠀⠠⠐⠀⢘⣸⣣⣥⣉⡘⢺⠌⠗⡻⢿⠁⠀⠀⠀⠀⠄⠐⠀⠀⠀⠀⠀⠀⠁⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -77,6 +75,9 @@ int main()
 
     input(text_data, text_lines);
 
+    size_t str_num = text_split(text_lines, line_ptrs, file_size);
+
+    str_sort(line_ptrs, str_num);
     
 
     char s1[] = "asd";

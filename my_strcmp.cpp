@@ -5,6 +5,8 @@
 
 int my_strcmp(char *line1, char *line2)
 { 
-    // TODO da bliat gde assert?
+    assert(line1);
+    assert(line2);
+    
     return strcmp(line1, line2);
 }

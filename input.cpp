@@ -5,32 +5,30 @@
 
 #include "input.h"
 
-void input(FILE *text, char *text_lines)
+void input(FILE *text, char *text_lines, const char *file_name)
 {
     assert(text_lines);
     assert(text);
 
     struct stat file_info = {};
 
-    stat("Onegin.txt", &file_info);         //long      //TODO stat man; проверки
-        // TODO there is repeated file name
+    stat(file_name, &file_info);         //long      //TODO stat man; проверки
 
-    size_t i = 0;
+    size_t symbol_num = 0;
 
-    while(text_lines[i])
+    while(text_lines[symbol_num])
     {
-        fscanf(text, "%s", &text_lines[i]);
+        fscanf(text, "%s", &text_lines[symbol_num]);
 
-        i++;
+        symbol_num++;
     }
 
     strcat(text_lines, "\0");
 
-    i = 0;  // TODO da ti zaebal ...
-    // BUG write normal variables names
-
-    while(text_lines[i])
+    symbol_num = 0;
+    
+    while(text_lines[symbol_num])
     {
-        if(text_lines[i] == '\r' || text_lines[i] == '\n') text_lines[i] = '\0';
+        if(text_lines[symbol_num] == '\r' || text_lines[symbol_num] == '\n') text_lines[symbol_num] = '\0';
     }
 }
