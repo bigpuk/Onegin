@@ -5,6 +5,8 @@
 
 #include "input.h"
 #include "my_strcmp.h"
+#include "text_split.h"
+#include "str_sort.h"
 
 int main()
 {
@@ -73,9 +75,11 @@ int main()
 // ⠀⠀⢀⠂⢉⠰⠈⢄⠓⡰⠉⢆⡹⢄⠫⡔⡹⠄⠀⠐⡌⢲⡳⣞⣯⡿⣿⣿⡿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣾⢿⣽⡹⢥⠊⠄⣼⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⢿⣿⣿⣿⣯⣟⡿⣿⣽
 // ⠀⠈⠀⢀⠂⠄⡉⠄⢊⠄⡑⢢⠐⣊⠱⡈⠅⠀⠀⠜⣈⠧⠻⣜⣷⣻⢿⡽⣿⣿⣿⣿⣿⣿⡿⣿⣻⡽⣯⢟⡶⡙⢆⠡⢀⣯⡿⢿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣿⣻⢿⣿⣻⣼⢹
 
-    input(text_data, text_lines);
+    size_t str_num = input(text_data, text_lines, file_name);
 
-    size_t str_num = text_split(text_lines, line_ptrs, file_size);
+    char **line_ptrs = (char **)calloc(str_num, sizeof(char **));
+
+    text_split(text_lines, line_ptrs, file_size);
 
     str_sort(line_ptrs, str_num);
     

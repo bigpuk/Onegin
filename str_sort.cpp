@@ -1,15 +1,24 @@
 #include <TXLib.h>
+#include <stdlib.h>
+#include <assert.h>
 
 #include "str_swap.h"
-#include "my_strcmp.h"
+#include "str_sort.h"
 
-void str_sort(char **line_ptrs, int str_num)
+void str_sort(char **line_ptrs,  size_t str_num)
 {
-    for(size_t ptr_num = 0; ptr_num < str_num; ptr_num++)
+    assert(line_ptrs);
+    // for(size_t ptr_num = 0; ptr_num < str_num; ptr_num++)
+    // {
+    //     str_swap(*line_ptrs[ptr_num], *line_ptrs[ptr_num + 1]);
+    // }
+
+    // qsort(*line_ptrs, 0, str_num);
+    for(size_t i = 0; i < str_num; i++)
     {
-        if(my_strcmp(*line_ptrs[i], *line_ptrs[i + 1]) == 1)
+        for(size_t j = 0; j < str_num; j++)
         {
-            str_swap(*line_strs[i], *line_ptrs[i + 1]);
+            str_swap(line_ptrs[j], line_ptrs[i + 1]);
         }
     }
 }

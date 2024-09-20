@@ -5,7 +5,7 @@
 
 #include "input.h"
 
-void input(FILE *text, char *text_lines, const char *file_name)
+int input(FILE *text, char *text_lines, const char *file_name)
 {
     assert(text_lines);
     assert(text);
@@ -25,10 +25,19 @@ void input(FILE *text, char *text_lines, const char *file_name)
 
     strcat(text_lines, "\0");
 
+    size_t str_num = 0;
+
+    for(size_t i = 0; i < symbol_num; i++)
+    {
+        if(text_lines[i] == '\0' && text_lines[i + 1] == '\0') str_num++;
+    }
+
     symbol_num = 0;
-    
+
     while(text_lines[symbol_num])
     {
         if(text_lines[symbol_num] == '\r' || text_lines[symbol_num] == '\n') text_lines[symbol_num] = '\0';
     }
+
+    return str_num;
 }

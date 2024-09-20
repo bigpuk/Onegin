@@ -3,8 +3,8 @@ DED_FLAGS=-Wall -Wextra -Weffc++ -Wcast-align -Wcast-qual -Wconversion -Wctor-dt
 
 all: onegin
 
-onegin: main.o input.o my_strcmp.o str_swap.o text_split.o
-			g++ main.o input.o my_strcmp.o str_swap.o text_split.o -o onegin
+onegin: main.o input.o my_strcmp.o str_swap.o text_split.o str_sort.o
+			g++ main.o input.o my_strcmp.o str_swap.o text_split.o str_sort.o -o onegin
 
 main.o: main.cpp
 		g++ $(DED_FLAGS) -c main.cpp -o main.o
@@ -25,4 +25,4 @@ str_sort.o: str_sort.cpp
 		g++ $(DED_FLAGS) -c str_sort.cpp -o str_sort.o
 
 clean:
-	rm -rf *.o array_games
+	rm -rf *.o onegin
