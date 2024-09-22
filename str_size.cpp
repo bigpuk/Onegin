@@ -1,4 +1,4 @@
-#include <TXLib.h>
+#include <stdio.h>
 #include <assert.h>
 
 #include "str_size.h"

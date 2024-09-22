@@ -1,42 +1,44 @@
-#include <TXLib.h>
+#include <stdio.h>
 #include <assert.h>
 #include <sys/stat.h>
 #include <string.h>
 
 #include "input.h"
 
-int input(FILE *text, char *text_lines, const char *file_name)
+int input(FILE *text, char *buffer, const char *file_name, size_t file_size)
 {
-    assert(text_lines);
+    assert(buffer);
     assert(text);
+    assert(file_name);
+    //long      //TODO stat man; проверки
 
-    struct stat file_info = {};
+    // while(buffer[symbol_num - 1])
+    // {
+    //     fscanf(text, "%s", &buffer[symbol_num]);
+    //     printf("%d", symbol_num);
 
-    stat(file_name, &file_info);         //long      //TODO stat man; проверки
+    //     symbol_num++;
+    // }
 
-    size_t symbol_num = 0;
+    fread(buffer, sizeof(char), file_size, text);
 
-    while(text_lines[symbol_num])
-    {
-        fscanf(text, "%s", &text_lines[symbol_num]);
-
-        symbol_num++;
-    }
-
-    strcat(text_lines, "\0");
+    //strcat(buffer, "\0");
 
     size_t str_num = 0;
 
-    for(size_t i = 0; i < symbol_num; i++)
+    size_t beginning_check = 1;
+
+    for(size_t current_symbol = 0; current_symbol < file_size; current_symbol++)
     {
-        if(text_lines[i] == '\0' && text_lines[i + 1] == '\0') str_num++;
+        if(buffer[current_symbol] == '\r' || buffer[current_symbol] == '\n') buffer[current_symbol] = '\0';
     }
 
-    symbol_num = 0;
-
-    while(text_lines[symbol_num])
+    for(size_t current_symbol = 0; current_symbol < file_size; current_symbol++)
     {
-        if(text_lines[symbol_num] == '\r' || text_lines[symbol_num] == '\n') text_lines[symbol_num] = '\0';
+        if(beginning_check) str_num++;
+
+        if(buffer[current_symbol - 1] == '\0' && buffer[current_symbol] != '\0') beginning_check = 1;
+        else beginning_check = 0;
     }
 
     return str_num;

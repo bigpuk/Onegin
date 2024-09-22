@@ -3,6 +3,6 @@
 
 #include <stdlib.h>
 
-void output(char **line_ptrs, size_t str_num);
+void output(char **line_ptrs, size_t ptr_num);
 
 #endif

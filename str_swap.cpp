@@ -1,4 +1,4 @@
-#include <TXLib.h>
+#include <stdio.h>
 #include <string.h>
 #include <assert.h>
 
@@ -13,7 +13,7 @@ void str_swap(char *line1, char *line2)
 
     char *ptr_temp = nullptr;
 
-    if(my_strcmp(line1, line2) == 1)
+    if(my_strcmp((void *)line1, (void *)line2) == 1)
     {
         ptr_temp = line1;
         line1 = line2;

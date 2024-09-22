@@ -1,13 +1,13 @@
-#include <TXLib.h>
+#include <stdio.h>
 #include <assert.h>
 
 #include "text_split.h"
 
-int text_split(char *text_lines, char **line_ptrs, size_t file_size)
+int text_split(char *buffer, char **line_ptrs, size_t file_size)
 {
-    assert(text_lines);
+    assert(buffer);
     assert(line_ptrs);
-    
+
 //     ⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⢰⡿⠋⠁⠀⠀⠈⠉⠙⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⢀⣿⠇⠀⢀⣴⣶⡾⠿⠿⠿⢿⣿⣦⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -22,28 +22,30 @@ int text_split(char *text_lines, char **line_ptrs, size_t file_size)
 // ⠀⠀⠀⠀⢸⣿⣀⣀⣀⣼⡿⢿⣿⣿⣿⣿⣿⡿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠙⠛⠛⠛⠋⠁⠀⠙⠻⠿⠟⠋⠑⠛⠋⠀
 
-    size_t str_num = 0;
+    size_t ptr_num = 0;
 
     size_t beginning_check = 1;
 
     for(size_t current_line = 0; current_line < file_size; current_line++)
     {
-        // if(text_lines[current_line] != '\0' && text_lines[current_line - 1] == '\0')
+        // if(buffer[current_line] != '\0' && buffer[current_line - 1] == '\0')
         // {
-        //     line_ptrs[str_num] = text_lines;
+        //     line_ptrs[str_num] = buffer;
 
         //     str_num++;
         // }
+
+        
         if(beginning_check)
         {
-            *line_ptrs[str_num] = text_lines[current_line];
+            line_ptrs[ptr_num] = &(buffer[current_line]);
 
-            str_num++;
+            ptr_num++;
         }
 
-        if(text_lines[current_line - 1] == '\0' && text_lines[current_line] != '\0') beginning_check = 1;
+        if(buffer[current_line] == '\0' && buffer[current_line + 1] != '\0') beginning_check = 1;
         else beginning_check = 0;
     }
 
-    return str_num;
+    return ptr_num;
 }
