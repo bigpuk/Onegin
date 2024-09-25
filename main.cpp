@@ -34,16 +34,24 @@ int main()
 
     input(text_data, buffer, file_name, file_size);
 
-    char **line_ptrs = (char **)calloc(file_size, sizeof(char **));
+    char **line_ptrs = (char **)calloc(file_size, sizeof(char *));
+
+    if(!line_ptrs)
+    {
+        printf("Out of memory!");
+
+        return 1;
+    }
 
     size_t ptr_num = text_split(buffer, line_ptrs, file_size);
+    
+    str_sort(line_ptrs, ptr_num);
 
-    str_sort(line_ptrs, file_size);
+    //qsort((void *) line_ptrs, ptr_num, sizeof(char*), my_strcmp);
 
     output(line_ptrs, ptr_num);
     
-
-    char s1[] = "asd";
-    char s2[] = "zxc";
-    printf("%d", my_strcmp(s1, s2));
+    // char s1[] = "asd";
+    // char s2[] = "zxc";
+    // printf("%d", my_strcmp(s1, s2));
 }

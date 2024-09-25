@@ -45,7 +45,9 @@ int text_split(char *buffer, char **line_ptrs, size_t file_size)
 
         if(buffer[current_line] == '\0' && buffer[current_line + 1] != '\0') beginning_check = 1;
         else beginning_check = 0;
+        
     }
+    
 
     return ptr_num;
 }

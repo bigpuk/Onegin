@@ -14,6 +14,6 @@ void output(char **line_ptrs, size_t ptr_num)
 
     for(size_t current_ptr = 0; current_ptr < ptr_num; current_ptr++)
     {
-        printf("%s", *(line_ptrs[current_ptr]));
+        if(line_ptrs[current_ptr]) printf("%s\n", line_ptrs[current_ptr]);
     }
 }
