@@ -1,11 +1,12 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <assert.h>
+#include <string.h>
 
 #include "str_swap.h"
 #include "str_sort.h"
 #include "my_strcmp.h"
-#include "commmon.h"
+//#include "commmon.h"
 
 void str_sort(char **line_ptrs, size_t ptr_num)
 {
@@ -16,11 +17,9 @@ void str_sort(char **line_ptrs, size_t ptr_num)
     // }
 
     //void *line_ptrs_temp = (void *) *line_ptrs;
-    char *lines = (char *)calloc(ptr_num, sizeof(char *));
 
-    for(size_t i = 0; i < ptr_num; i++) lines[i] = *(line_ptrs[i]);
+    qsort((void *)line_ptrs, ptr_num, sizeof(char *), my_strcmp);
 
-    qsort((void *)lines, ptr_num, sizeof(char *), comparator my_strcmp);
 
     //char * line_ptrs_temp = nullptr;
 
