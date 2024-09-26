@@ -41,5 +41,7 @@ int input(FILE *text, char *buffer, const char *file_name, size_t file_size)
         else beginning_check = 0;
     }
 
+    strcat(buffer, "\0");
+
     return str_num;
 }

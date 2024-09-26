@@ -23,7 +23,7 @@ int main()
 
     size_t file_size = file_info.st_size;
 
-    char *buffer = (char *)calloc(file_size, sizeof(char *));
+    char *buffer = (char *)calloc(file_size + 1, sizeof(char *));
 
     if(!buffer)
     {
@@ -32,9 +32,9 @@ int main()
         return 1;
     }
 
-    input(text_data, buffer, file_name, file_size);
+    size_t str_num = input(text_data, buffer, file_name, file_size);
 
-    char **line_ptrs = (char **)calloc(file_size, sizeof(char *));
+    char **line_ptrs = (char **)calloc(str_num, sizeof(char *));
 
     if(!line_ptrs)
     {
