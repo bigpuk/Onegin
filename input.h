@@ -3,6 +3,10 @@
 
 #include <stdio.h>
 
-int input(FILE *text, char *buffer, const char *file_name, size_t file_size);
+#include "common.h"
+
+#define file_name "Onegin.txt"
+
+int input(common *data);
 
 #endif

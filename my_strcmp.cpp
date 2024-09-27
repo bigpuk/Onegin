@@ -40,3 +40,16 @@ int my_strcmp(const void *line1, const void *line2)
     
     return 0;
 }
+
+int my_reversestrcmp(const void *line1, const void *line2)
+{
+    const char *str1 = *(const char **)line1;
+    const char *str2 = *(const char **)line2;
+
+    size_t current_symbol1 = 0, current_symbol2 = 0;
+
+    char temp1 = '0';
+    char temp2 = '0';
+
+
+}

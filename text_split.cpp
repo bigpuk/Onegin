@@ -3,10 +3,9 @@
 
 #include "text_split.h"
 
-int text_split(char *buffer, char **line_ptrs, size_t file_size)
+int text_split(common *data)
 {
-    assert(buffer);
-    assert(line_ptrs);
+    assert(data);
 
 //     ⠀⠀⠀⠀⣠⣤⣤⣤⣤⣤⣄⡀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⢰⡿⠋⠁⠀⠀⠈⠉⠙⠻⣷⣄⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀⠀
@@ -22,11 +21,11 @@ int text_split(char *buffer, char **line_ptrs, size_t file_size)
 // ⠀⠀⠀⠀⢸⣿⣀⣀⣀⣼⡿⢿⣿⣿⣿⣿⣿⡿⣿⣿⡿⠀⠀⠀⠀⠀⠀⠀⠀⠀
 // ⠀⠀⠀⠀⠀⠙⠛⠛⠛⠋⠁⠀⠙⠻⠿⠟⠋⠑⠛⠋⠀
 
-    size_t ptr_num = 0;
+    data->ptr_num = 0;
 
     size_t beginning_check = 1;
 
-    for(size_t current_line = 0; current_line < file_size; current_line++)
+    for(size_t current_line = 0; current_line < data->file_size; current_line++)
     {
         // if(buffer[current_line] != '\0' && buffer[current_line - 1] == '\0')
         // {
@@ -35,19 +34,40 @@ int text_split(char *buffer, char **line_ptrs, size_t file_size)
         //     str_num++;
         // }
 
-        
         if(beginning_check)
         {
-            line_ptrs[ptr_num] = &(buffer[current_line]);
+            (data->line_ptrs)[data->ptr_num] = ((data->buffer) + current_line);
 
-            ptr_num++;
+            (data->ptr_num)++;
         }
 
-        if(buffer[current_line] == '\0' && buffer[current_line + 1] != '\0') beginning_check = 1;
+        if(((data->buffer)[current_line] == '\0') && ((data->buffer)[current_line + 1] != '\0')) beginning_check = 1;
         else beginning_check = 0;
-        
     }
-    
 
-    return ptr_num;
+    size_t end_check = 0;
+    
+    // size_t str_num = 0;
+
+    // for(size_t current_line = data->file_size; current_line > 0; current_line--)
+    // {
+    //     // if(buffer[current_line] != '\0' && buffer[current_line - 1] == '\0')
+    //     // {
+    //     //     line_ptrs[str_num] = buffer;
+
+    //     //     str_num++;
+    //     // }
+    //     if(end_check)
+    //     {
+    //         data->line_ptrs[str_num] = &((data->buffer)[current_line]);
+
+    //         str_num++;
+    //     }
+
+    //     if((data->buffer)[current_line] == '\0' && (data->buffer)[current_line + 1] != '\0') end_check = 1;
+    //     else end_check = 0;
+        
+    // }
+
+    return 0;
 }

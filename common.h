@@ -2,13 +2,14 @@
 #define COMMON_H
 
 #include <stdlib.h>
+#include <sys/stat.h>
 
-struct commmon
+struct common
 {
     char **line_ptrs;
     size_t ptr_num;
+    char * buffer;
+    size_t file_size;
 };
-
-typedef int (*comparator)(const void *line1, const void *line2);
 
 #endif

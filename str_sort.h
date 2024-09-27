@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 
-void str_sort(char **line_ptrs, size_t str_num);
+#include "common.h"
+
+void str_sort(common *data);
 
 #endif

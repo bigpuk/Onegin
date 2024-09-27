@@ -3,6 +3,8 @@
 
 #include <stdlib.h>
 
-void output(char **line_ptrs, size_t ptr_num);
+#include "common.h"
+
+void output(common *data);
 
 #endif

@@ -6,11 +6,10 @@
 #include "str_swap.h"
 #include "str_sort.h"
 #include "my_strcmp.h"
-//#include "commmon.h"
 
-void str_sort(char **line_ptrs, size_t ptr_num)
+void str_sort(common *data)
 {
-    assert(line_ptrs);
+    assert(data);
     // for(size_t ptr_num = 0; ptr_num < str_num; ptr_num++)
     // {
     //     str_swap(*line_ptrs[ptr_num], *line_ptrs[ptr_num + 1]);
@@ -18,7 +17,7 @@ void str_sort(char **line_ptrs, size_t ptr_num)
 
     //void *line_ptrs_temp = (void *) *line_ptrs;
 
-    qsort((void *)line_ptrs, ptr_num, sizeof(char *), my_strcmp);
+    qsort((void *)(data->line_ptrs), data->ptr_num, sizeof(char *), my_strcmp);
 
 
     //char * line_ptrs_temp = nullptr;

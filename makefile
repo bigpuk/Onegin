@@ -3,8 +3,8 @@ DED_FLAGS=-Wall -Wextra -Weffc++ -Wcast-align -Wcast-qual -Wconversion -Wctor-dt
 
 all: onegin
 
-onegin: main.o input.o my_strcmp.o str_swap.o text_split.o str_sort.o output.o
-			g++ main.o input.o my_strcmp.o str_swap.o text_split.o str_sort.o output.o -o onegin
+onegin: input.o my_strcmp.o str_swap.o text_split.o str_sort.o output.o main.o
+	g++ $(DED_FLAGS) main.o input.o my_strcmp.o str_swap.o text_split.o str_sort.o output.o -o onegin
 
 main.o: main.cpp
 		g++ $(DED_FLAGS) -c main.cpp -o main.o
