@@ -27,13 +27,6 @@ int text_split(common *data)
 
     for(size_t current_line = 0; current_line < data->file_size; current_line++)
     {
-        // if(buffer[current_line] != '\0' && buffer[current_line - 1] == '\0')
-        // {
-        //     line_ptrs[str_num] = buffer;
-
-        //     str_num++;
-        // }
-
         if(beginning_check)
         {
             (data->line_ptrs)[data->ptr_num] = ((data->buffer) + current_line);
@@ -45,7 +38,7 @@ int text_split(common *data)
         else beginning_check = 0;
     }
 
-    size_t end_check = 0;
+   // size_t end_check = 0;
     
     // size_t str_num = 0;
 

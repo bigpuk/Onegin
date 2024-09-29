@@ -10,8 +10,12 @@ int input(common *data)
 {
     assert(data);
 
-    FILE* text_data = fopen(file_name, "r");   // FIXME if
-    assert(text_data);                         // TODO read about argc argv 
+    FILE* text_data = fopen(file_name, "r");
+    if(!(text_data))
+    {
+        printf("Input error!");
+        return 1;
+    }                        // TODO read about argc argv 
 
     struct stat file_info = {};
 
@@ -39,17 +43,7 @@ int input(common *data)
 
     for(size_t current_line = 0; current_line < data->file_size; current_line++)
     {
-        // if(buffer[current_line] != '\0' && buffer[current_line - 1] == '\0')
-        // {
-        //     line_ptrs[str_num] = buffer;
-
-        //     str_num++;
-        // }
-
-        if(beginning_check)
-        {
-            (data->ptr_num)++;
-        }
+        if(beginning_check) (data->ptr_num)++;
 
         if(((data->buffer)[current_line] == '\0') && ((data->buffer)[current_line + 1] != '\0')) beginning_check = 1;
         else beginning_check = 0;
@@ -59,6 +53,8 @@ int input(common *data)
 
 
     strcat(data->buffer, "\0");
+
+    fclose(text_data);
 
     return 0;
 }

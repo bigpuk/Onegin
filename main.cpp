@@ -12,19 +12,13 @@
 
 int main()
 {
-    //common data = {.line_ptrs = nullptr, .ptr_num = 0, .buffer = nullptr};
-    common data = {};// = {.line_ptrs = nullptr, .ptr_num = 0, .buffer = nullptr, .file_size = 0};
+    common data = {};
+    
     input(&data);
 
     text_split(&data);
     
     str_sort(&data);
 
-    //qsort((void *) line_ptrs, ptr_num, sizeof(char*), my_strcmp);
-
     output(&data);
-    
-    // char s1[] = "asd";
-    // char s2[] = "zxc";
-    // printf("%d", my_strcmp(s1, s2));
 }
