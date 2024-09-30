@@ -1,1 +1,3 @@
 *.o
+*.dmp
+/Onegin.txt

@@ -24,7 +24,6 @@ int input(common *data)
     data->file_size = file_info.st_size;
 
     data->buffer = (char *)calloc(data->file_size + 1, sizeof(char));
-
     if(!data->buffer)
     {
         printf("Out of memory!");
@@ -50,7 +49,6 @@ int input(common *data)
     }
 
     data->line_ptrs = (char **)calloc(data->ptr_num, sizeof(char *));
-
 
     strcat(data->buffer, "\0");
 

@@ -25,16 +25,16 @@ int text_split(common *data)
 
     size_t beginning_check = 1;
 
-    for(size_t current_line = 0; current_line < data->file_size; current_line++)
+    for(size_t current_elem = 0; current_elem < data->file_size; current_elem++)
     {
         if(beginning_check)
         {
-            (data->line_ptrs)[data->ptr_num] = ((data->buffer) + current_line);
+            (data->line_ptrs)[data->ptr_num] = ((data->buffer) + current_elem);
 
             (data->ptr_num)++;
         }
 
-        if(((data->buffer)[current_line] == '\0') && ((data->buffer)[current_line + 1] != '\0')) beginning_check = 1;
+        if(((data->buffer)[current_elem] == '\0') && ((data->buffer)[current_elem + 1] != '\0')) beginning_check = 1;
         else beginning_check = 0;
     }
 
